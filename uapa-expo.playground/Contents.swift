@@ -2,10 +2,9 @@
 
 import UIKit
 
+//Variables y Constantes
 var str = "Hello, everyone"
-
-var constant = 4
-
+let constant = 4
 if (constant > 3) {
     print("es mayor de 3")
 }
@@ -13,6 +12,9 @@ else {
     print("es menor de 3")
 }
 
+
+
+//Estructuras y Clases (Optionales, Initializers, De-Inititalizers)
 struct Person {
     var name: String
 }
@@ -43,31 +45,60 @@ class Animal {
         self.init(name: name, legs: 0, type: .reptile)
     }
     
+    //Defer
     func feed(){
         defer{
             self.numberOfMeals += 1
-            print("Cantidad de comidas para \(self.name): \(self.numberOfMeals)")
+            print("Cantidad de comidas para \(self.name!): \(self.numberOfMeals)")
         }
         
         print("\(self.name!) ha sido alimentado")
     }
     
     deinit{
-        print("\(self.name) has been deallocated")
+        print("\(self.name!) has been deallocated")
     }
     
 }
+
+//Arreglos
+//var animales = Array<Animal>()
 
 var animals = [Animal]()
 
 var rocky = Animal(name: "Bobby", legs: 4)
 let luck = Animal(name: "Luck", legs: 2, type: .mammal)
 let snake = Animal(name: "Ryan", legs: 2, type: .reptile)
+
 animals.append(rocky)
 animals.append(luck)
 animals.append(snake)
 
 
+//Enumeraciones
+
+enum CustomError: ErrorType {
+    case ConnectionError(message: String, code: Int)
+}
+
+//Manejo de errores
+func makeConnection(value: Int) throws{
+    if(value == 1){
+        throw CustomError.ConnectionError(message: "Ha ocurrido un error", code: 101)
+    }
+}
+
+
+do {
+    try makeConnection(1)
+}
+catch {
+    print("Hey an error has occurred")
+}
+
+
+//Looping
+// - Guard
 for animal in animals {
     guard let unwrappedAnimalType = animal.type else{
         continue
@@ -78,8 +109,11 @@ for animal in animals {
     }
 }
 
-var image = UIImage(named: "kitura.png")
 
+
+//Playground cool stuffs
+
+var image = UIImage(named: "kitura.png")
 //print(M_PI)
 
 for conteo in 1...5 {
