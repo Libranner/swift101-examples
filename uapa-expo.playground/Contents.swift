@@ -124,6 +124,41 @@ for conteo in 1...5 {
 
 
 
+//Intermediate
+protocol Drawable {
+    func numberOfPoints() -> Int;
+}
+
+class Figure {
+    
+}
+
+protocol Transformable {
+    func transform() -> Figure;
+}
+
+class Square : Drawable, Transformable{
+    func numberOfPoints() -> Int {
+        return 4;
+    }
+    
+    func transform() -> Figure {
+        return Figure()
+    }
+}
+
+extension Double{
+    var km: Double { return self * 1_000.0 }
+    var m: Double { return self }
+    var cm: Double { return self / 100.0 }
+    var mm: Double { return self / 1_000.0 }
+    var ft: Double { return self / 3.28084 }
+}
+
+let distance = 10.ft
+
+
+
 
 
 
