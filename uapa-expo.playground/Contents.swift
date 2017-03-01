@@ -4,6 +4,7 @@ import UIKit
 
 //Variables y Constantes
 var str = "Hello, everyone"
+
 let constant = 4
 if (constant > 3) {
     print("es mayor de 3")
@@ -17,9 +18,11 @@ else {
 //Estructuras y Clases (Optionales, Initializers, De-Inititalizers)
 struct Person {
     var name: String
+    var lastName: String
 }
 
-let p = Person(name: "John")
+let person =  Person(name: "Bar", lastName: "Foo")
+print(person)
 
 enum TypeOfAnimal {
     case reptile, mammal
@@ -35,7 +38,7 @@ class Animal {
         self.name = name
         self.legs =  legs
     }
-    
+
     convenience init (name: String, legs: Int, type: TypeOfAnimal?){
         self.init(name: name, legs: legs)
         self.type = type
@@ -67,6 +70,9 @@ class Animal {
 var animals = [Animal]()
 
 var rocky = Animal(name: "Bobby", legs: 4)
+
+rocky.feed()
+
 let luck = Animal(name: "Luck", legs: 2, type: .mammal)
 let snake = Animal(name: "Ryan", legs: 2, type: .reptile)
 
@@ -77,7 +83,7 @@ animals.append(snake)
 
 //Enumeraciones
 
-enum CustomError: ErrorType {
+enum CustomError: Error {
     case ConnectionError(message: String, code: Int)
 }
 
@@ -90,14 +96,16 @@ func makeConnection(value: Int) throws{
 
 
 do {
-    try makeConnection(1)
+    try makeConnection(value: 1)
 }
 catch {
+    print(error)
     print("Hey an error has occurred")
 }
 
 
 //Looping
+
 // - Guard
 for animal in animals {
     guard let unwrappedAnimalType = animal.type else{
@@ -110,6 +118,14 @@ for animal in animals {
 }
 
 
+for index in 1...5 {
+    print("\(index) times 5 is \(index * 5)")
+}
+
+for i in 0..<3 {
+    print(i)
+}
+
 
 //Playground cool stuffs
 
@@ -117,14 +133,13 @@ var image = UIImage(named: "kitura.png")
 //print(M_PI)
 
 for conteo in 1...5 {
-    for value in 0.0.stride(to: M_PI * 2, by: 0.1) {
+    for value in stride(from:0.0, to: M_PI * 2, by: 0.1) {
         var y = cos(value)
     }
 }
 
 
-
-//Intermediate
+//Intermediate Swift: Protocols
 protocol Drawable {
     func numberOfPoints() -> Int;
 }
@@ -147,6 +162,8 @@ class Square : Drawable, Transformable{
     }
 }
 
+
+//Cool feautures Swift
 extension Double{
     var km: Double { return self * 1_000.0 }
     var m: Double { return self }
@@ -155,8 +172,26 @@ extension Double{
     var ft: Double { return self / 3.28084 }
 }
 
-let distance = 10.ft
+let distance = 10.cm
 
+
+
+//Override operators with Swift
+func * (left: String, right: Int) -> String {
+    if right <= 0 {
+        return ""
+    }
+
+    var result = left
+    for _ in 1..<right {
+        result += left
+    }
+
+    return result
+}
+
+var t = "Hola " * 6
+print(t)
 
 
 
