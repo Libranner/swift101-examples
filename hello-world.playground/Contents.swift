@@ -80,6 +80,9 @@ animals.append(rocky)
 animals.append(luck)
 animals.append(snake)
 
+var moreAnimals = [Animal]()
+moreAnimals += animals
+
 
 //Enumeraciones
 
@@ -172,7 +175,7 @@ extension Double{
     var ft: Double { return self / 3.28084 }
 }
 
-let distance = 10.cm
+let distance = 1.ft
 
 
 //Generics
