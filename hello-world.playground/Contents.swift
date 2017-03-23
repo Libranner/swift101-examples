@@ -175,6 +175,32 @@ extension Double{
 let distance = 10.cm
 
 
+//Generics
+struct Stack<Element> {
+    var items = [Element]()
+
+    mutating func push(_ item: Element) {
+        items.append(item)
+    }
+
+    mutating func pop() -> Element {
+        return items.removeLast()
+    }
+}
+
+var stackOfStrings = Stack<String>()
+stackOfStrings.push("uno")
+stackOfStrings.push("dos")
+stackOfStrings.push("tres")
+
+extension Stack {
+    var topItem: Element? {
+        return items.isEmpty ? nil : items[items.count - 1]
+    }
+}
+print(stackOfStrings)
+stackOfStrings.topItem
+
 
 //Override operators with Swift
 func * (left: String, right: Int) -> String {
