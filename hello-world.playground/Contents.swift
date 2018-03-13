@@ -135,9 +135,10 @@ for i in 0..<3 {
 var image = UIImage(named: "kitura.png")
 //print(M_PI)
 
-for conteo in 1...5 {
-    for value in stride(from:0.0, to: M_PI * 2, by: 0.1) {
-        var y = cos(value)
+for _ in 1...5 {
+    for value in stride(from:0.0, to: Double.pi * 2, by: 0.1) {
+        let y = cos(value)
+        print(y)
     }
 }
 
